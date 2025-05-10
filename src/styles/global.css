@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-raspberry: #a74d4a;
+  --color-raspberry-light: #d98c8a;
+  --color-gray: #faf9f7;
+  --color-gray-dark: #4f4f4f;
+  --color-gray-light: #5a5a5a;
+  --color-porcelain: #f8f5f2;
+  --color-accent: #f0d9c1;
+
+  --font-header: "Libre Baskerville", serif;
+  --font-body: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-body text-gray-dark bg-gray;
+  }
+}
+
+@layer utilities {
+}

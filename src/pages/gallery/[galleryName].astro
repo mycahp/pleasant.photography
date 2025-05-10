@@ -1,0 +1,14 @@
+---
+import Gallery from "../../components/Gallery";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  return [{ params: { galleryName: "wildlife" } }];
+}
+
+const { galleryName } = Astro.params;
+---
+
+<Layout>
+  <Gallery galleryName={galleryName} />
+</Layout>

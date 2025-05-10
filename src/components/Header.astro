@@ -1,0 +1,19 @@
+---
+import Links from "./Links.astro";
+import LogoText from "./LogoText.astro";
+---
+
+<nav
+  class="fixed top-0 left-0 w-full p-8 py-4 shadow-lg bg-porcelain flex lg:hidden items-center flex-col"
+>
+  <div
+    class="absolute inset-0 bg-[url('/textures/diagonal-noise.png')] bg-repeat opacity-50 mix-blend-multiply pointer-events-none"
+  >
+  </div>
+  <LogoText />
+  <div
+    class="mt-5 text-center font-medium flex flex-wrap justify-center gap-x-0 gap-y-1 text-md items-center"
+  >
+    <Links />
+  </div>
+</nav>

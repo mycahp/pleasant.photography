@@ -10,10 +10,25 @@ import LogoText from "./LogoText.astro";
     class="absolute inset-0 bg-[url('/textures/diagonal-noise.png')] bg-repeat opacity-50 mix-blend-multiply pointer-events-none"
   >
   </div>
-  <LogoText />
+  <div class="sm:w-[70%] w-full">
+    <div class="mt-auto mb-auto w-full">
+      <LogoText />
+    </div>
+  </div>
   <div
-    class="mt-5 text-center font-medium flex flex-wrap justify-center gap-x-0 gap-y-1 text-md items-center"
+    class="text-center font-medium flex-wrap justify-center gap-x-0 gap-y-1 text-md items-center mt-5 sm:flex hidden"
   >
     <Links />
+  </div>
+  <div class="sm:hidden flex h-full justify-center items-center mt-3 gap-x-3">
+    <label
+      for="menu-toggle"
+      class="cursor-pointer underline hover:text-gray-500 font-medium"
+      >MENU</label
+    >
+    <input type="checkbox" id="menu-toggle" class="hidden peer" />
+    <div class="hidden peer-checked:block">
+      <Links />
+    </div>
   </div>
 </nav>

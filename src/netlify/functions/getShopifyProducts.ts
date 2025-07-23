@@ -70,7 +70,7 @@ const handler: Handler = async () => {
       headers: {
         "Content-Type": "application/json",
         "Cache-Control":
-          "public, max-age=300, s-maxage=300, stale-while-revalidate=600",
+          "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400",
       },
     };
   } catch (error: unknown) {

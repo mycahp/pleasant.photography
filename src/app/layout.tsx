@@ -79,10 +79,10 @@ export default function RootLayout({
               reserved.
             </p>
             <p>Unauthorized use is not permitted.</p>
-            {/* <a href="/contact" className="underline">
+            <a href="/contact" className="underline">
               Contact me
             </a>{" "}
-            for licensing information. */}
+            for licensing information.
           </div>
         </footer>
       </body>

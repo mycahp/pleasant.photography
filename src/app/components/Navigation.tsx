@@ -42,13 +42,13 @@ export default function Navigation() {
             About
           </Link> */}
           {/* | */}
-          {/* <Link
+          <Link
             href="/contact"
             className="hover:text-brand-teal underline transition-colors"
           >
             Contact
-          </Link> */}
-          {/* | */}
+          </Link>
+          |
           <a
             href="https://www.flickr.com/photos/mycahpleasant/"
             target="_blank"
@@ -99,13 +99,13 @@ export default function Navigation() {
               className="hover:text-brand-teal transition-colors"
             >
               About
-            </Link>
+            </Link> */}
             <Link
               href="/contact"
               className="hover:text-brand-teal transition-colors"
             >
               Contact
-            </Link> */}
+            </Link>
             <a
               href="https://www.flickr.com/photos/mycahpleasant/"
               target="_blank"

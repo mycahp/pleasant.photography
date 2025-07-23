@@ -48,6 +48,25 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="64x64"
+          href="/favicon-64x64.png"
+        />
       </head>
       <body className={`antialiased bg-brand-navy text-brand-off-white `}>
         <div className="z-[-1] fixed inset-0 bg-[url('/dimension.png')] bg-repeat opacity-20 pointer-events-none" />

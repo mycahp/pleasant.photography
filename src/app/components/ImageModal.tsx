@@ -21,7 +21,7 @@ export default function ImageModal({
 
   const imageHandle = imageProduct.node.handle;
 
-  const buyUrl = `https://shop.mycahpleasant.photography/product/${imageHandle}`;
+  const buyUrl = `https://shop.mycahpleasant.photography/products/${imageHandle}`;
 
   return (
     <>

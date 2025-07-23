@@ -1,5 +1,4 @@
 import type { Handler } from "@netlify/functions";
-import fetch from "node-fetch";
 
 const handler: Handler = async () => {
   try {
@@ -70,14 +69,30 @@ const handler: Handler = async () => {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-        "Cache-Control": "public, max-age=300, s-maxage=300, stale-while-revalidate=600"
+        "Cache-Control":
+          "public, max-age=300, s-maxage=300, stale-while-revalidate=600",
       },
     };
-  } catch (error) {
-    console.error("Error fetching products:", error);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("Error message:", error.message);
+      return {
+        statusCode: 500,
+        body: JSON.stringify({
+          error: "Internal server error",
+          detail: error.message,
+        }),
+      };
+    }
+
+    // fallback if it's not an Error instance
+    console.error("Unknown error:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Internal server error" }),
+      body: JSON.stringify({
+        error: "Unknown error",
+        detail: JSON.stringify(error),
+      }),
     };
   }
 };

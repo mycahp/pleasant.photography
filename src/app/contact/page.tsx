@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 /* eslint-disable react/no-unescaped-entities */
 function Contact() {
   const [success, setSuccess] = useState<string | null>(null);
+  const nextUrl = `${window.location.origin}${window.location.pathname}?success=true`;
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -15,7 +16,7 @@ function Contact() {
     <div className="flex justify-center bg-brand-off-white shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.1)] mb-5 p-4 border-b-8 border-b-brand-teal rounded-t-2xl w-full h-full">
       <div className="flex flex-col justify-center gap-8 w-[90%] lg:w-[75%]">
         {success && (
-          <div className="font-semibold text-brand-indigo">
+          <div className="font-semibold text-brand-indigo text-2xl">
             Thanks! Your message has been sent.
           </div>
         )}
@@ -36,16 +37,13 @@ function Contact() {
           {/* Optional hidden inputs */}
           <input type="hidden" name="_captcha" value="true" />
           <input type="hidden" name="_template" value="box" />
+
           <input
             type="hidden"
             name="_autoresponse"
-            value="Thanks for your message! I’ll be in touch soon."
+            value="Thanks for your message! I'll be in touch soon."
           />
-          <input
-            type="hidden"
-            name="_next"
-            value="https://pleasant.photography/contact?success=true"
-          />
+          <input type="hidden" name="_next" value={nextUrl} />
 
           <div>
             <label htmlFor="name" className="block mb-1 font-medium text-sm">

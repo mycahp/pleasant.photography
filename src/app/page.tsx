@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { ImageProduct } from "./types/ImageProduct";
 import ImageModal from "./components/ImageModal";
 
+const Skeleton = () => (
+  <div className="bg-gray-200 rounded w-full aspect-[4/5] animate-pulse" />
+);
+
 export default function Home() {
   const [imageList, setImageList] = useState<ImageProduct[]>([]);
   const [loading, setLoading] = useState(false);
@@ -42,7 +46,7 @@ export default function Home() {
       // eslint-disable-next-line @next/next/no-img-element
       <img
         key={img.node.handle}
-        src={imageUrl}
+        src={`${imageUrl}?format=auto&quality=60&width=1000`}
         className="hover:shadow-md rounded-sm w-full sm:hover:scale-[1.01] transition"
         alt={imageTitle}
         onClick={() => {
@@ -55,29 +59,8 @@ export default function Home() {
 
   return (
     <>
-      {loading && !error && (
-        <div className="flex flex-col justify-center items-center bg-brand-off-white rounded-t-2xl w-full h-[300px]">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="h-[96px] text-brand-teal animate__bounce animate__animated animate__infinite"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-            />
-          </svg>
-          <span className="text-brand-teal text-2xl">Loading...</span>
-        </div>
-      )}
       {!loading && error && (
-        <div className="flex flex-col justify-center items-center gap-4 bg-brand-off-white rounded-t-2xl w-full h-[300px]">
-          {imageList.map((img) => getImageElement(img))}
-
+        <div className="flex flex-col justify-center items-center gap-4 bg-brand-off-white p-8 rounded-t-2xl w-full h-[300px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -97,23 +80,26 @@ export default function Home() {
           </span>
         </div>
       )}
-      {!loading && !error && (
-        <>
-          {currentImageModalProduct && (
-            <ImageModal
-              isOpen={imageModalOpen}
-              imageProduct={currentImageModalProduct!}
-              onOpenChange={(open) => setImageModalOpen(open)}
-            />
-          )}
-          <div className="gap-4 columns-1 sm:columns-2 lg:columns-3 bg-brand-off-white shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.1)] mb-5 p-4 border-b-8 border-b-brand-teal rounded-t-2xl w-full h-full">
-            {imageList.map((img: ImageProduct) => (
-              <div key={img.node.handle} className="mb-4 break-inside-avoid">
-                {getImageElement(img)}
-              </div>
-            ))}
-          </div>
-        </>
+
+      <div className="gap-4 columns-1 sm:columns-2 lg:columns-3 bg-brand-off-white shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.1)] mb-5 p-4 border-b-8 border-b-brand-teal rounded-t-2xl w-full h-full">
+        {loading &&
+          Array.from({ length: 12 }).map((_, i) => <Skeleton key={i} />)}
+
+        {!loading &&
+          !error &&
+          imageList.map((img: ImageProduct) => (
+            <div key={img.node.handle} className="mb-4 break-inside-avoid">
+              {getImageElement(img)}
+            </div>
+          ))}
+      </div>
+
+      {currentImageModalProduct && (
+        <ImageModal
+          isOpen={imageModalOpen}
+          imageProduct={currentImageModalProduct!}
+          onOpenChange={(open) => setImageModalOpen(open)}
+        />
       )}
     </>
   );

@@ -28,10 +28,10 @@ export default function Navigation() {
           className="w-auto max-h-[200px] sm:max-h-[300px]"
         />
         <div className="flex flex-col mb-6 text-center">
-          <h1 className="font-body font-bold text-[42px] tracking-widest">
+          <h1 className="font-header font-extrabold text-[35px] md:text-[45px] text-center tracking-widest">
             MyCah Pleasant
           </h1>
-          <h2 className="mt-[-10px] font-header text-[30px] tracking-wide">
+          <h2 className="mt-[-10px] font-header text-[30px] md:text-[30px] tracking-wide">
             Photography
           </h2>
         </div>

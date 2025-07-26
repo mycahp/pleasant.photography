@@ -67,6 +67,11 @@ export default function RootLayout({
           sizes="64x64"
           href="/favicon-64x64.png"
         />
+        <script
+          defer
+          src="https://analytics.mycah.net/script.js"
+          data-website-id="d307d152-2fc2-4cf1-945d-c4cecd74c03d"
+        ></script>
       </head>
       <body className={`antialiased bg-brand-navy text-brand-off-white `}>
         <div className="z-[-1] fixed inset-0 bg-[url('/dimension.png')] bg-repeat opacity-20 pointer-events-none" />

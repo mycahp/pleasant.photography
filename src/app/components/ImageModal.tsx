@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { ImageProduct } from "../types/ImageProduct";
 
 export default function ImageModal({
@@ -9,6 +10,18 @@ export default function ImageModal({
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) {
     return null;
   }
@@ -26,7 +39,7 @@ export default function ImageModal({
   return (
     <>
       <div
-        className="z-50 fixed inset-0 flex justify-center items-center bg-black/75"
+        className="z-50 fixed inset-0 flex justify-center items-center bg-black/30 backdrop-blur-3xl transition-opacity duration-300 ease-in-out"
         onClick={() => onOpenChange(false)}
       >
         <div

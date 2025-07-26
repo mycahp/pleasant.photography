@@ -111,7 +111,6 @@ export default function Navigation() {
             MyCah Pleasant Photography
           </Link>
 
-          {/* Right-side: Mobile toggle and Flickr icon */}
           <div className="flex items-center gap-2">
             <div className="md:hidden flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 border border-white/20 rounded-lg">
               <button
@@ -176,7 +175,7 @@ export default function Navigation() {
                 href="https://www.flickr.com/photos/mycahpleasant/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center pl-2 hover:text-brand-teal transition-colors"
+                className="flex items-center hover:text-brand-teal transition-colors"
               >
                 <svg
                   role="img"

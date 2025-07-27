@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect } from "react";
 import { ImageProduct } from "../types/ImageProduct";
 
@@ -48,7 +49,7 @@ export default function ImageModal({
         >
           <div className="flex flex-col items-center">
             <img
-              src={imageUrl}
+              src={`${imageUrl}?format=auto&quality=60&width=1000`}
               alt={imageTitle}
               className="max-w-full max-h-[calc(100vh-100px)] object-contain"
             />

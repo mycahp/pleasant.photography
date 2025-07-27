@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <>
       {!loading && error && (
-        <div className="flex flex-col justify-center items-center gap-4 bg-brand-off-white p-8 rounded-t-2xl w-full h-[300px] text-brand-teal">
+        <div className="card">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -54,7 +54,7 @@ export default function Home() {
         </div>
       )}
 
-      <div className="gap-4 columns-1 sm:columns-2 lg:columns-3 bg-brand-off-white shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.1)] mb-5 p-4 border-b-8 border-b-brand-teal rounded-t-2xl w-full h-full">
+      <div className="gap-4 columns-1 sm:columns-2 lg:columns-3 card">
         {loading &&
           Array.from({ length: 12 }).map((_, i) => <Skeleton key={i} />)}
 

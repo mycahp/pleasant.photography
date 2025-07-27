@@ -21,7 +21,7 @@ const FlickrIcon = () => (
 
 const NavLinks = ({ className = "" }) => (
   <div
-    className={`flex flex-wrap justify-center items-center gap-x-1 gap-y-2 sm:gap-x-4 ${className}`}
+    className={`flex flex-wrap justify-center items-center gap-x-1 gap-y-2 sm:gap-x-3 ${className}`}
   >
     <Link href="/" className={linkClass}>
       Home

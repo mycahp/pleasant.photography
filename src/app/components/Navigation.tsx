@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const linkClass =
-  "hover:bg-white/20 px-3 py-1 rounded-md text-white hover:underline underline-offset-4 transition-colors";
+  "hover:bg-white/20 px-3 py-1 rounded-md text-white underline-offset-4 transition-colors cursor-pointer";
 const dividerClass = "self-center bg-white/20 w-px h-6";
 
 const FlickrIcon = () => (

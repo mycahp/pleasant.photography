@@ -21,7 +21,7 @@ const FlickrIcon = () => (
 
 const NavLinks = ({ className = "" }) => (
   <div
-    className={`flex flex-wrap justify-center items-center gap-x-2 gap-y-2 sm:gap-x-4 ${className}`}
+    className={`flex flex-wrap justify-center items-center gap-x-1 gap-y-2 sm:gap-x-4 ${className}`}
   >
     <Link href="/" className={linkClass}>
       Home
@@ -48,7 +48,7 @@ const NavLinks = ({ className = "" }) => (
       href="https://www.flickr.com/photos/mycahpleasant/"
       target="_blank"
       rel="noreferrer"
-      className="flex items-center hover:text-brand-teal transition-colors flickr-link"
+      className="flex items-center pl-2 sm:pl-0 hover:text-brand-teal transition-colors flickr-link"
     >
       <FlickrIcon />
     </a>
@@ -60,15 +60,22 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navRef = useRef<HTMLDivElement | null>(null);
 
+  const closeMenu = () => setIsMenuOpen(false);
+
   useEffect(() => {
     const handleScroll = () => {
+      const currentScrollY = window.scrollY;
       const offset = navRef.current?.offsetHeight ?? 160;
-      setIsSticky(window.scrollY > offset);
+      const shouldBeSticky = currentScrollY > offset;
+      setIsSticky(shouldBeSticky);
+
+      if (!shouldBeSticky) {
+        setIsMenuOpen(false);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -94,81 +101,87 @@ export default function Navigation() {
       </div>
 
       {/* Sticky Navigation - Shows when scrolled */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 bg-brand-navy/95 backdrop-blur-sm border-b shadow-xl border-brand-teal/30 transition-transform duration-300 ${
-          isSticky ? "translate-y-0" : "-translate-y-full"
-        } mb-4`}
-      >
-        <div className="flex justify-between items-center px-5 py-3">
-          {/* Logo/Brand */}
-          <Link href="/" className="flex items-center">
-            <img
-              src="https://mycah.pics/mpp_logo_alt_white.png"
-              alt="MyCah Pleasant Photography Logo"
-              className="w-[200px] h-auto shrink-0"
-            />
-          </Link>
+      <div className="z-50 relative">
+        <nav
+          className={`fixed top-0 left-0 right-0 z-50 bg-brand-navy/95 backdrop-blur-sm border-b shadow-xl border-brand-teal/30 transition-transform duration-300 ${
+            isSticky ? "translate-y-0" : "-translate-y-full"
+          } mb-4`}
+        >
+          <div className="flex justify-between items-center px-5 py-3">
+            {/* Logo/Brand */}
+            <Link href="/" className="flex items-center">
+              <img
+                src="https://mycah.pics/mpp_logo_alt_white.png"
+                alt="MyCah Pleasant Photography Logo"
+                className="w-[200px] h-auto shrink-0"
+              />
+            </Link>
 
-          <div className="flex items-center gap-2">
-            <div className="md:hidden flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 border border-white/20 rounded-lg">
-              <button
-                className="mt-[-5px] text-brand-off-white text-xl cursor-pointer"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label="Toggle menu"
-              >
-                ☰
-              </button>
-              <a
-                href="https://www.flickr.com/photos/mycahpleasant/"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center pl-2 hover:text-brand-teal transition-colors"
-              >
-                <FlickrIcon />
-              </a>
+            <div className="flex items-center gap-2">
+              <div className="md:hidden flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 border border-white/20 rounded-lg">
+                <button
+                  className="mt-[-5px] text-brand-off-white text-xl cursor-pointer"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  aria-label="Toggle menu"
+                >
+                  ☰
+                </button>
+                <a
+                  href="https://www.flickr.com/photos/mycahpleasant/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center pl-2 hover:text-brand-teal transition-colors"
+                >
+                  <FlickrIcon />
+                </a>
+              </div>
+            </div>
+
+            {/* Navigation Links and flickr icon */}
+            <div className="hidden md:flex items-center gap-3 ml-auto">
+              <div className="flex flex-wrap gap-2 sm:gap-4 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 border border-white/20 rounded-lg font-body">
+                <NavLinks />
+              </div>
             </div>
           </div>
+        </nav>
 
-          {/* Navigation Links and flickr icon */}
-          <div className="hidden md:flex items-center gap-3 ml-auto">
-            <div className="flex flex-wrap gap-2 sm:gap-4 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 border border-white/20 rounded-lg font-body">
-              <NavLinks className="" />
-            </div>
+        {/* Mobile Dropdown Menu (below sticky nav) */}
+        {isMenuOpen && isSticky && (
+          <div className="md:hidden top-[95px] right-0 left-0 z-40 fixed flex flex-col gap-2 bg-brand-navy/95 backdrop-blur-sm px-5 py-4 border-white/20 border-b rounded-b-lg">
+            <Link
+              href="/"
+              className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
+              onClick={closeMenu}
+            >
+              Home
+            </Link>
+            <Link
+              href="/about"
+              className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
+              onClick={closeMenu}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
+              onClick={closeMenu}
+            >
+              Contact
+            </Link>
+            <a
+              href="https://focusingscreen.net"
+              target="_blank"
+              rel="noreferrer"
+              className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
+              onClick={closeMenu}
+            >
+              Focusing Screen
+            </a>
           </div>
-        </div>
-      </nav>
-
-      {/* Mobile Dropdown Menu (below sticky nav) */}
-      {isMenuOpen && isSticky && (
-        <div className="md:hidden top-[56px] right-0 left-0 z-40 fixed flex flex-col gap-2 bg-brand-navy/95 backdrop-blur-sm px-5 py-4 border-white/20 border-b rounded-b-lg">
-          <Link
-            href="/"
-            className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
-          >
-            About
-          </Link>
-          <Link
-            href="/contact"
-            className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
-          >
-            Contact
-          </Link>
-          <a
-            href="https://focusingscreen.net"
-            target="_blank"
-            rel="noreferrer"
-            className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
-          >
-            Focusing Screen
-          </a>
-        </div>
-      )}
+        )}
+      </div>
     </>
   );
 }

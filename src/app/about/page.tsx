@@ -2,7 +2,7 @@
 function About() {
   return (
     <div className="flex-col p-8 card">
-      <div className="sm:mx-auto w-full sm:w-[50%]">
+      <div className="sm:mx-auto w-full md:w-[50%]">
         <h1 className="mb-5 text-brand-teal text-3xl">About</h1>
         <p>
           I'm a photographer based in North Georgia who loves to wander—both

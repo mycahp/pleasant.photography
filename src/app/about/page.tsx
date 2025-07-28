@@ -5,7 +5,7 @@ function About() {
     <div className="flex-col p-0 card">
       <img
         src="https://mycah.pics/mpp_about.jpg"
-        className="mb-8 rounded-t-2xl"
+        className="shadow-lg mb-8 rounded-t-2xl"
         alt="About Me"
       />
       <div className="sm:mx-auto mb-8 p-4 w-full md:w-[50%]">

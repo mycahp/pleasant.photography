@@ -8,7 +8,7 @@ function About() {
         className="mb-8 rounded-t-2xl"
         alt="About Me"
       />
-      <div className="sm:mx-auto mb-8 w-full md:w-[50%]">
+      <div className="sm:mx-auto mb-8 p-4 w-full md:w-[50%]">
         <h1 className="mb-8 text-brand-teal text-3xl">About</h1>
         <p>
           I'm a photographer based in North Georgia who loves to wander—both

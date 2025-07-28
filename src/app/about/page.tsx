@@ -1,9 +1,16 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unescaped-entities */
 function About() {
   return (
     <div className="flex-col p-8 card">
       <div className="sm:mx-auto w-full md:w-[50%]">
+        <img
+          src="https://mycah.pics/mpp_about.jpg"
+          className="shadow-xl mb-4 rounded-lg"
+          alt="About Me"
+        />
         <h1 className="mb-5 text-brand-teal text-3xl">About</h1>
+
         <p>
           I'm a photographer based in North Georgia who loves to wander—both
           around town and across the country with my camera in tow.

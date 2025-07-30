@@ -11,6 +11,8 @@ const handler: Handler = async () => {
               title
               description
               handle
+              createdAt
+              updatedAt
               variants(first: 100) {
                 edges {
                   node {

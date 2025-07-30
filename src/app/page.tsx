@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ImageProduct } from "./types/ImageProduct";
 import ImageModal from "./components/ImageModal";
+import { orderBy } from "lodash";
 
 const Skeleton = () => (
   <div className="bg-gray-200 rounded w-full aspect-[4/5] animate-pulse" />
@@ -24,7 +25,7 @@ export default function Home() {
       if (!res.ok) {
         setError(true);
       } else {
-        setImageList((await res.json()).data.products.edges);
+        setImageList((await res.json()).data.products.edges as ImageProduct[]);
       }
       setLoading(false);
     })();
@@ -60,28 +61,30 @@ export default function Home() {
 
         {!loading &&
           !error &&
-          imageList.map((img: ImageProduct) => {
-            const imageUrl = img.node.metafields.edges.find(
-              (edge) => edge.node.key == "image_url"
-            )?.node.value;
+          orderBy(imageList, ["node.updatedAt"], ["desc"]).map(
+            (img: ImageProduct) => {
+              const imageUrl = img.node.metafields.edges.find(
+                (edge) => edge.node.key == "image_url"
+              )?.node.value;
 
-            const imageTitle = img.node.title;
+              const imageTitle = img.node.title;
 
-            return (
-              <div key={img.node.handle} className="mb-4 break-inside-avoid">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={`${imageUrl}?format=auto&quality=60&width=1000`}
-                  className="hover:shadow-md rounded-sm w-full sm:hover:scale-[1.01] transition"
-                  alt={imageTitle}
-                  onClick={() => {
-                    setCurrentImageModalProduct(img);
-                    setImageModalOpen(true);
-                  }}
-                />
-              </div>
-            );
-          })}
+              return (
+                <div key={img.node.handle} className="mb-4 break-inside-avoid">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`${imageUrl}?format=auto&quality=60&width=1000`}
+                    className="hover:shadow-md rounded-sm w-full sm:hover:scale-[1.01] transition"
+                    alt={imageTitle}
+                    onClick={() => {
+                      setCurrentImageModalProduct(img);
+                      setImageModalOpen(true);
+                    }}
+                  />
+                </div>
+              );
+            }
+          )}
       </div>
 
       {currentImageModalProduct && (

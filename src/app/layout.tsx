@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
 import "./globals.css";
 import "animate.css";

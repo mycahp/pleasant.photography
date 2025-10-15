@@ -5,13 +5,13 @@ function About() {
     <div className="flex-col p-0 card">
       <img
         src="https://mycah.pics/mpp_about.jpg"
-        className="shadow-lg mb-8 rounded-t-2xl"
+        className="mb-8 shadow-lg rounded-t-2xl"
         alt="About Me"
       />
       <div className="sm:mx-auto mb-8 p-4 w-full md:w-[50%]">
-        <h1 className="mb-8 text-brand-teal text-3xl">About</h1>
+        <h1 className="mb-8 text-3xl text-brand-teal">About</h1>
         <p>
-          I'm a photographer based in North Georgia who loves to wander—both
+          I'm a photographer based in North Georgia who loves to wander -- both
           around town and across the country with my camera in tow.
         </p>
         <br />

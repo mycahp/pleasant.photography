@@ -36,19 +36,19 @@ const NavLinks = ({ className = "" }) => (
     </Link>
     <div className={dividerClass} />
     <Link
-      href="https://focusingscreen.net"
+      href="/bookings"
       className={linkClass}
       target="_blank"
       rel="noreferrer"
     >
-      Focusing Screen
+      Bookings
     </Link>
     <div className={dividerClass} />
     <a
       href="https://www.flickr.com/photos/mycahpleasant/"
       target="_blank"
       rel="noreferrer"
-      className="flex items-center pl-2 sm:pl-0 hover:text-brand-teal transition-colors flickr-link"
+      className="flex items-center pl-2 transition-colors sm:pl-0 hover:text-brand-teal flickr-link"
     >
       <FlickrIcon />
     </a>
@@ -81,10 +81,10 @@ export default function Navigation() {
   return (
     <>
       {/* Main Navigation - Responsive Layout */}
-      <div ref={navRef} className="z-10 mb-4 w-full">
-        <div className="bg-white/10 shadow-xl backdrop-blur-sm px-3 sm:px-4 py-3 rounded-b-2xl w-full font-body text-brand-off-white text-sm md:text-base">
-          <div className="flex md:flex-row flex-col sm:justify-between sm:items-center gap-3 sm:gap-6 w-full">
-            <div className="flex justify-center sm:justify-start p-2">
+      <div ref={navRef} className="z-10 w-full mb-4">
+        <div className="w-full px-3 py-3 text-sm shadow-xl bg-white/10 backdrop-blur-sm sm:px-4 rounded-b-2xl font-body text-brand-off-white md:text-base">
+          <div className="flex flex-col w-full gap-3 md:flex-row sm:justify-between sm:items-center sm:gap-6">
+            <div className="flex justify-center p-2 sm:justify-start">
               <Link href="/" className="flex items-center">
                 <img
                   src="https://mycah.pics/mpp_logo_alt_white.png"
@@ -93,7 +93,7 @@ export default function Navigation() {
                 />
               </Link>
             </div>
-            <div className="flex flex-wrap justify-center sm:justify-end items-center gap-x-1 gap-y-2 lg:gap-x-4 pr-2">
+            <div className="flex flex-wrap items-center justify-center pr-2 sm:justify-end gap-x-1 gap-y-2 lg:gap-x-4">
               <NavLinks className="gap-x-1 gap-y-2" />
             </div>
           </div>
@@ -101,13 +101,13 @@ export default function Navigation() {
       </div>
 
       {/* Sticky Navigation - Shows when scrolled */}
-      <div className="z-50 relative">
+      <div className="relative z-50">
         <nav
           className={`fixed top-0 left-0 right-0 z-50 bg-brand-navy/95 backdrop-blur-sm border-b shadow-xl border-brand-teal/30 transition-transform duration-300 ${
             isSticky ? "translate-y-0" : "-translate-y-full"
           } mb-4`}
         >
-          <div className="flex justify-between items-center px-5 py-3">
+          <div className="flex items-center justify-between px-5 py-3">
             {/* Logo/Brand */}
             <Link href="/" className="flex items-center">
               <img
@@ -130,7 +130,7 @@ export default function Navigation() {
                   href="https://www.flickr.com/photos/mycahpleasant/"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center pl-2 hover:text-brand-teal transition-colors"
+                  className="flex items-center pl-2 transition-colors hover:text-brand-teal"
                 >
                   <FlickrIcon />
                 </a>
@@ -138,8 +138,8 @@ export default function Navigation() {
             </div>
 
             {/* Navigation Links and flickr icon */}
-            <div className="hidden md:flex items-center gap-3 ml-auto">
-              <div className="flex flex-wrap gap-2 sm:gap-4 bg-white/10 backdrop-blur-sm px-3 sm:px-4 py-2 border border-white/20 rounded-lg font-body">
+            <div className="items-center hidden gap-3 ml-auto md:flex">
+              <div className="flex flex-wrap gap-2 px-3 py-2 border rounded-lg sm:gap-4 bg-white/10 backdrop-blur-sm sm:px-4 border-white/20 font-body">
                 <NavLinks />
               </div>
             </div>
@@ -151,21 +151,21 @@ export default function Navigation() {
           <div className="md:hidden top-[95px] right-0 left-0 z-40 fixed flex flex-col gap-2 bg-brand-navy/95 backdrop-blur-sm px-5 py-4 border-white/20 border-b rounded-b-lg">
             <Link
               href="/"
-              className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
+              className="transition-colors text-brand-off-white hover:underline underline-offset-4"
               onClick={closeMenu}
             >
               Home
             </Link>
             <Link
               href="/about"
-              className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
+              className="transition-colors text-brand-off-white hover:underline underline-offset-4"
               onClick={closeMenu}
             >
               About
             </Link>
             <Link
               href="/contact"
-              className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
+              className="transition-colors text-brand-off-white hover:underline underline-offset-4"
               onClick={closeMenu}
             >
               Contact
@@ -174,7 +174,7 @@ export default function Navigation() {
               href="https://focusingscreen.net"
               target="_blank"
               rel="noreferrer"
-              className="text-brand-off-white hover:underline underline-offset-4 transition-colors"
+              className="transition-colors text-brand-off-white hover:underline underline-offset-4"
               onClick={closeMenu}
             >
               Focusing Screen

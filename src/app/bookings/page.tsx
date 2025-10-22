@@ -19,7 +19,7 @@ export default function Bookings() {
           iframeRef.current
         );
       }
-    }, 30);
+    }, 100);
     return () => clearTimeout(t);
   }, []);
 

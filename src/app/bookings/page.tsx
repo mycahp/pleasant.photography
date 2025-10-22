@@ -11,6 +11,7 @@ export default function Bookings() {
 
   useEffect(() => {
     const t = setTimeout(() => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const iFrameResize = (window as any).iFrameResize;
       if (typeof iFrameResize === "function" && iframeRef.current) {
         iFrameResize(

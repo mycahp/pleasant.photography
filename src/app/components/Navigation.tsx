@@ -87,7 +87,7 @@ export default function Navigation() {
             <div className="flex justify-center p-2 sm:justify-start">
               <Link href="/" className="flex items-center">
                 <img
-                  src="https://mycah.pics/mpp_logo_alt_white.png"
+                  src="https://cdn.pleasant.photography/mpp_logo_alt_white.png"
                   alt="MyCah Pleasant Photography Logo"
                   className="w-[200px] h-auto shrink-0"
                 />
@@ -111,7 +111,7 @@ export default function Navigation() {
             {/* Logo/Brand */}
             <Link href="/" className="flex items-center">
               <img
-                src="https://mycah.pics/mpp_logo_alt_white.png"
+                src="https://cdn.pleasant.photography/mpp_logo_alt_white.png"
                 alt="MyCah Pleasant Photography Logo"
                 className="w-[200px] h-auto shrink-0"
               />

@@ -4,7 +4,7 @@ function About() {
   return (
     <div className="flex-col p-0 card">
       <img
-        src="https://mycah.pics/mpp_about.jpg"
+        src="https://cdn.pleasant.photography/mpp_about.jpg"
         className="mb-8 shadow-lg rounded-t-2xl"
         alt="About Me"
       />
